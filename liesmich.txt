@@ -1,0 +1,114 @@
+Diese Modifikation ist nur geeignet, wenn PayPal Express folgendermaßen konfiguriert ist:
+
+Payment Zone
+--kein--
+
+Express Checkout Shortcut Button
+Off
+
+Express Checkout: Require Confirmed Address
+No
+
+Express Checkout: Select Cheapest Shipping Automatically
+No
+
+Express Checkout: Skip Payment Page
+No
+
+Express Checkout: Automatic Account Creation
+No
+
+Payment Action
+Final Sale
+
+Transaction Currency
+Only EUR
+
+Allow eCheck?
+Instant Only
+
+Mit dieser Konfiguration läuft die gesamte Erfassung von Lieferadresse, Rechnungsadresse, Versandkosten und Steuern im Shop ab und PayPal dient nur zur Abwicklung der Zahlung.
+Es wird KEIN Express Checkout Button verwendet, der Kunde gibt all seine Daten ganz normal im Shop im Zuge der Bestellung ein.
+
+Im derzeitigen PayPal Express Modul wird die Lieferadresse, die der Kunde im Shop angegeben hat bei einer Bestellung mit PayPal Express von der bei PayPal hinterlegten Adresse überschrieben.
+Da viele Kunden in ihrem PayPal Account veraltete Adressen hinterlegt haben und beim PayPal Checkout nicht darauf achten, die Adresse zu korrigieren, führt das oft dazu, dass man Bestellungen erhält, bei denen die Lieferadresse nicht die ist, die der Kunde wirklich haben wollte.
+
+Diese Modifikation löst das Problem, indem PayPal nun nicht mehr in die Adressinformationen eingreift.
+Dem Kunden wird beim Checkout auf der PayPal Seite die Angabe einer Lieferadresse oder von Kommentaren nicht mehr angeboten. Er kann auch nicht mehr auf das bei PayPal hinterlegte Adressbuch zugreifen.
+Dadurch wird gewährleistet, dass die in der Bestellung übermittelte Lieferadresse wirklich die ist, die der Kunde bei der Bestellung im Shop ausgewählt hat.
+PayPal macht rein die Zahlungsabwicklung und kümmert sich nicht mehr um die Adresse.
+Zusätzlich bekommt der Kunde mit dieser Modifikation die Paypal Seite nicht in der Grundsprache des Shops angeboten, sondern - falls im Shop mehrere Sprachen aktiv sind - in der Sprache, mit der er die Bestellung im Shop durchführt.
+
+Dieses modifizierte Modul ist nur geeignet, wenn Paypal Express so konfiguriert wird wie oben beschrieben!
+
+
+Installation für Zen Cart 1.5.3:
+
+1)
+Backup des aktuell verwendeten Paypal Express Moduls:
+Folgende Dateien aus der Zen Cart Installation herunterladen:
+includes/modules/payment/paypalwpp.php
+includes/modules/payment/paypal (ganzer Ordner)
+Notieren der PayPal Express API Daten:
+API Signature -- Username
+API Signature -- Password
+API Signature -- Signature Code
+(Passwort und Signatur sind im PayPal Account ersichtlich)
+
+2)
+Entfernen des aktuell verwendeten PayPal Express Moduls unter Module > Zahlungsarten
+
+3)
+Hochladen der Dateien aus dem Ordner GEAENDERTE DATEIEN in der vorgegebenen Struktur, dadurch werden bestehende PayPal Express Dateien überschrieben.
+
+4)
+PayPal Express (paypalwpp) unter Module > Zahlungsarten wieder installieren und so konfigurieren wie oben beschrieben.
+
+5)
+Testbestellung machen
+
+
+Verwendung des Moduls in 1.5.1 oder 1.5
+
+Das Modul  kann auch in Zen Cart 1.5.1 oder 1.5 verwendet werden, dazu sind aber vor der Installation folgende Änderungen nötig:
+
+1)
+
+includes/modules/payment/paypalwpp.php:
+
+$this->codeVersion = '1.5.3';
+
+Ändern von 1.5.3 auf 1.5.1 oder 1.5.0
+
+if (PROJECT_VERSION_MAJOR != '1' && substr(PROJECT_VERSION_MINOR, 0, 3) != '5.3') $this->enabled = false;
+
+Ändern von 5.3 auf 5.1 oder 5.0
+
+2)
+
+includes/modules/payment/paypal/paypal_curl.php
+
+$headers[] = 'X-VPS-VIT-Integration-Version: 1.5.3';
+
+Ändern von 1.5.3 auf 1.5.1 oder 1.5.0
+
+3)
+
+Die Logs für Paypal werden seit 1.5.3 im Ordner logs gespeichert und nicht mehr in includes/modules/payment/paypal/logs
+Wenn 1.5.1 oder 1.5 verwendet wird, am Server einen Ordner namens logs anlegen und mit chmod 777 beschreibbar machen.
+Idealerweise diesen Ordner auf eine Ebene oberhalb des www Verzeichnisses legen, so dass er nicht per www aufrufbar ist
+
+Folgende Definition einfügen in includes/configure.php und DEINADMIN/include/configure.php und den absoluten Pfad zum logs Ordner angeben:
+
+define('DIR_FS_LOGS', '/absoluter/pfad/zum/ordner/logs');
+
+
+
+
+
+
+
+
+
+
+
