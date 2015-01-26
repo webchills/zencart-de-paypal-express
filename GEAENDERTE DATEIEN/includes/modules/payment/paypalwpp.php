@@ -3,10 +3,10 @@
  * paypalwpp.php payment module class for PayPal Express Checkout payment method
  *
  * @package paymentMethod
- * @copyright Copyright 2003-2014 Zen Cart Development Team
+ * @copyright Copyright 2003-2015 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart-pro.at/license/2_0.txt GNU Public License V2.0
- * @version $Id: paypalwpp.php ohne Überschreiben der Lieferadresse 2014-08-30 12:12:14Z webchills $
+ * @version $Id: paypalwpp.php ohne Überschreiben der Lieferadresse 2015-01-26 07:12:14Z webchills $
  */
 /**
  * load the communications layer code
@@ -101,7 +101,7 @@ class paypalwpp extends base {
     global $order;
     $this->code = 'paypalwpp';
     $this->codeTitle = MODULE_PAYMENT_PAYPALWPP_TEXT_ADMIN_TITLE_EC;
-    $this->codeVersion = '1.5.3';
+    $this->codeVersion = '1.5.4';
     $this->enableDirectPayment = FALSE;
     $this->enabled = (MODULE_PAYMENT_PAYPALWPP_STATUS == 'True');
     // Set the title & description text based on the mode we're in ... EC vs US/UK vs admin
@@ -164,7 +164,7 @@ class paypalwpp extends base {
     $this->zone = (int)MODULE_PAYMENT_PAYPALWPP_ZONE;
     if (is_object($order)) $this->update_status();
 
-    if (PROJECT_VERSION_MAJOR != '1' && substr(PROJECT_VERSION_MINOR, 0, 3) != '5.3') $this->enabled = false;
+    if (PROJECT_VERSION_MAJOR != '1' && substr(PROJECT_VERSION_MINOR, 0, 3) != '5.4') $this->enabled = false;
 
     $this->cards = array();
     // if operating in markflow mode, start EC process when submitting order
@@ -650,7 +650,7 @@ class paypalwpp extends base {
     // cannot remove EC if DP installed:
     if (defined('MODULE_PAYMENT_PAYPALDP_STATUS')) {
       // this language text is hard-coded in english since Website Payments Pro is not yet available in any countries that speak any other language at this time.
-      $messageStack->add_session('<strong>Sorry, you must remove PayPal Payments Pro (paypaldp) first.</strong> PayPal Payments Pro (Website Payments Pro) requires that you offer Express Checkout to your customers.<br /><a href="' . zen_href_link(FILENAME_MODULES . '?set=payment&module=paypaldp', '', 'NONSSL') . '">Click here to edit or remove your PayPal Payments Pro module.</a>' , 'error');
+      $messageStack->add_session('<strong>Sorry, you must remove PayPal Payments Pro (paypaldp) first.</strong> PayPal Payments Pro (Website Payments Pro) requires that you offer Express Checkout to your customers.<br /><a href="' . zen_href_link('modules.php?set=payment&module=paypaldp', '', 'NONSSL') . '">Click here to edit or remove your PayPal Payments Pro module.</a>' , 'error');
       zen_redirect(zen_href_link(FILENAME_MODULES, 'set=payment&module=paypalwpp', 'NONSSL'));
       return 'failed';
     }
@@ -711,11 +711,7 @@ class paypalwpp extends base {
   /**
    * Initialize the PayPal/PayflowPro object for communication to the processing gateways
    */
-  function paypal_init($testmode = 'normal') {
-    if ($testmode == 'testcomm') {
-      $doPayPal = new paypal_curl(array('mode' => 'TESTCOMMUNICATIONS'));
-      return $doPayPal;
-    }
+  function paypal_init() {
     if (!defined('MODULE_PAYMENT_PAYPALWPP_STATUS') || !defined('MODULE_PAYMENT_PAYPALWPP_SERVER')) {
       $doPayPal = new paypal_curl(array('mode' => 'NOTCONFIGURED'));
       return $doPayPal;
@@ -758,26 +754,6 @@ class paypalwpp extends base {
 
     return $doPayPal;
   }
-
-  /**
-   * Test whether the module is able to communicate with the gateway
-   * @return multitype:string
-   */
-  function testCommunications() {
-    $retVal = array();
-    $doPayPal = $this->paypal_init('testcomm');
-    $result = $doPayPal->testResults;
-//   die('result=<pre>'.var_export($result, true));
-    if ($result === TRUE) {
-      $retVal['type'] = 'success';
-      $retVal['text'] = 'Communications Test Successful: ' . $this->code . ' (' . $doPayPal->_endpoints[$doPayPal->_server] . ')';
-    } else {
-      $retVal['type'] = 'error';
-      $retVal['text'] = 'Communications Test FAILED: ' . $this->code . ': ' . ' (' . $doPayPal->_endpoints[$doPayPal->_server] . ')' . ' - ' . $result;
-    }
-    return $retVal;
-  }
-
   /**
    * Determine which PayPal URL to direct the customer's browser to when needed
    */
@@ -1172,9 +1148,6 @@ class paypalwpp extends base {
         }
       }
 
-      $this->ot_merge = array();
-      $this->notify('NOTIFY_PAYMENT_PAYPALEC_SUBTOTALS_TAX', $order, $order_totals);
-      if (sizeof($this->ot_merge)) $optionsST = array_merge($optionsST, $this->ot_merge);
       if ($creditsApplied > 0) $optionsST['ITEMAMT'] -= $creditsApplied;
       if ($surcharges > 0) $optionsST['ITEMAMT'] += $surcharges;
 
@@ -1648,10 +1621,9 @@ class paypalwpp extends base {
     if ($_SESSION['paypal_ec_markflow'] == 1) $orderReview = false;
     $userActionKey = "&useraction=" . ((int)$orderReview == false ? 'commit' : 'continue');
 
-    $this->ec_redirect_url = $paypal_url . "?cmd=_express-checkout&token=" . $_SESSION['paypal_ec_token'] . $userActionKey;
     // This is where we actually redirect the customer's browser to PayPal. Upon return from PayPal, they go to ec_step2
     header("HTTP/1.1 302 Object Moved");
-    zen_redirect($this->ec_redirect_url);
+    zen_redirect($paypal_url . "?cmd=_express-checkout&token=" . $_SESSION['paypal_ec_token'] . $userActionKey);
 
     // this should never be reached:
     return $error;
@@ -2109,7 +2081,7 @@ class paypalwpp extends base {
         }
 
         // hook notifier class vis a vis account-creation
-        $this->notify('NOTIFY_LOGIN_SUCCESS_VIA_CREATE_ACCOUNT', 'paypal express checkout');
+        $this->notify('NOTIFY_LOGIN_SUCCESS_VIA_CREATE_ACCOUNT');
 
       } else {
         // set the boolean ec temp value for the account to false, since we didn't have to create one
@@ -2815,8 +2787,8 @@ class paypalwpp extends base {
 
           // if funding source problem occurred, must send back to re-select alternate funding source
           if ($response['L_ERRORCODE0'] == 10422 || $response['L_ERRORCODE0'] == 10486) {
-            header("HTTP/1.1 302 Object Moved");
-            zen_redirect($this->ec_redirect_url);
+            $paypal_url = $this->getPayPalLoginServer();
+            zen_redirect($paypal_url . "?cmd=_express-checkout&token=" . $_SESSION['paypal_ec_token']);
             die();
           }
           // some other error condition

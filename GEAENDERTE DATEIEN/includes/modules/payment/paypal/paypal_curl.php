@@ -5,7 +5,7 @@
  * @package paymentMethod
  * @copyright Copyright 2003-2014 Zen Cart Development Team
  * @license http://www.zen-cart-pro.at/license/2_0.txt GNU Public License V2.0
- * @version $Id: paypal_curl.php 2014-08-30 07:24:50Z webchills $
+ * @version $Id: paypal_curl.php 2015-01-26 08:24:50Z webchills $
  */
 
 /**
@@ -57,7 +57,6 @@ class paypal_curl extends base {
                             CURLOPT_FOLLOWLOCATION => FALSE,
                           //CURLOPT_SSL_VERIFYPEER => FALSE, // Leave this line commented out! This should never be set to FALSE on a live site!
                           //CURLOPT_CAINFO => '/local/path/to/cacert.pem', // for offline testing, this file can be obtained from http://curl.haxx.se/docs/caextract.html ... should never be used in production!
-                            CURLOPT_SSLVERSION => 3,
                             CURLOPT_FORBID_REUSE => TRUE,
                             CURLOPT_FRESH_CONNECT => TRUE,
                             CURLOPT_POST => TRUE,
@@ -108,9 +107,6 @@ class paypal_curl extends base {
       $this->setParam($name, $value);
     }
     $this->notify('NOTIFY_PAYPAL_CURL_CONSTRUCT', $params);
-    if ($this->_mode == 'TESTCOMMUNICATIONS') {
-      $this->testResults = $this->_request(array(), 'testCommunications');
-    }
     if (!@is_writable($this->_logDir)) $this->_logDir = DIR_FS_CATALOG . $this->_logDir;
     if (!@is_writable($this->_logDir)) $this->_logDir = DIR_FS_LOGS;
     if (!@is_writable($this->_logDir)) $this->_logDir = DIR_FS_SQL_CACHE;
@@ -443,7 +439,7 @@ class paypal_curl extends base {
     } elseif ($this->_mode == 'nvp') {
       $headers[] = 'X-VPS-VIT-Integration-Product: PHP::Zen Cart(R) - PayPal/NVP';
     }
-    $headers[] = 'X-VPS-VIT-Integration-Version: 1.5.3';
+    $headers[] = 'X-VPS-VIT-Integration-Version: 1.5.4';
     $this->lastHeaders = $headers;
 
     $ch = curl_init();
@@ -468,10 +464,6 @@ class paypal_curl extends base {
 
     // do debug/logging
     if ((!in_array($operation, array('GetTransactionDetails','TransactionSearch'))) || (in_array($operation, array('GetTransactionDetails','TransactionSearch')) && !strstr($response, '&ACK=Success')) ) $this->_logTransaction($operation, $this->_getElapsed($start), $response, $errors . ($commErrNo != 0 ? "\n" . print_r($commInfo, true) : ''));
-
-    if ($operation == 'testCommunications') {
-      return ($commInfo['http_code'] == 200) ? TRUE : str_replace("\n", '', $errors);
-    }
 
     if ($response) {
       return $this->_parseNameValueList($response);
