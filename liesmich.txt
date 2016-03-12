@@ -1,4 +1,4 @@
-Diese Modifikation ist nur geeignet, wenn PayPal Express folgendermaßen konfiguriert ist:
+Diese Modifikation ist nur für Zen Cart 1.5.4 geeignet und nur wenn PayPal Express folgendermaßen konfiguriert ist:
 
 Payment Zone
 --kein--
@@ -37,7 +37,6 @@ Diese Modifikation löst das Problem, indem PayPal nun nicht mehr in die Adressi
 Dem Kunden wird beim Checkout auf der PayPal Seite die Angabe einer Lieferadresse oder von Kommentaren nicht mehr angeboten. Er kann auch nicht mehr auf das bei PayPal hinterlegte Adressbuch zugreifen.
 Dadurch wird gewährleistet, dass die in der Bestellung übermittelte Lieferadresse wirklich die ist, die der Kunde bei der Bestellung im Shop ausgewählt hat.
 PayPal macht rein die Zahlungsabwicklung und kümmert sich nicht mehr um die Adresse.
-Zusätzlich bekommt der Kunde mit dieser Modifikation die Paypal Seite nicht in der Grundsprache des Shops angeboten, sondern - falls im Shop mehrere Sprachen aktiv sind - in der Sprache, mit der er die Bestellung im Shop durchführt.
 
 Dieses modifizierte Modul ist nur geeignet, wenn Paypal Express so konfiguriert wird wie oben beschrieben!
 
@@ -48,7 +47,6 @@ Installation für Zen Cart 1.5.4:
 Backup des aktuell verwendeten Paypal Express Moduls:
 Folgende Dateien aus der Zen Cart Installation herunterladen:
 includes/modules/payment/paypalwpp.php
-includes/modules/payment/paypal (ganzer Ordner)
 Notieren der PayPal Express API Daten:
 API Signature -- Username
 API Signature -- Password
@@ -59,56 +57,10 @@ API Signature -- Signature Code
 Entfernen des aktuell verwendeten PayPal Express Moduls unter Module > Zahlungsarten
 
 3)
-Hochladen der Dateien aus dem Ordner GEAENDERTE DATEIEN in der vorgegebenen Struktur, dadurch werden bestehende PayPal Express Dateien überschrieben.
+Hochladen der Datei aus dem Ordner GEAENDERTE DATEIEN in der vorgegebenen Struktur, dadurch wird eine bestehende PayPal Express Dateien überschrieben.
 
 4)
 PayPal Express (paypalwpp) unter Module > Zahlungsarten wieder installieren und so konfigurieren wie oben beschrieben.
 
 5)
 Testbestellung machen
-
-
-Verwendung des Moduls in 1.5.3, 1.5.1 oder 1.5
-
-Das Modul  kann auch in Zen Cart 1.5.3 oder 1.5.1 verwendet werden, dazu sind aber vor der Installation folgende Änderungen nötig:
-
-1)
-
-includes/modules/payment/paypalwpp.php:
-
-$this->codeVersion = '1.5.4';
-
-Ändern von 1.5.4 auf 1.5.3 oder 1.5.1
-
-if (PROJECT_VERSION_MAJOR != '1' && substr(PROJECT_VERSION_MINOR, 0, 3) != '5.3') $this->enabled = false;
-
-Ändern von 5.4 auf 5.3 oder 5.1
-
-2)
-
-includes/modules/payment/paypal/paypal_curl.php
-
-$headers[] = 'X-VPS-VIT-Integration-Version: 1.5.4';
-
-Ändern von 1.5.4 auf 1.5.3 oder 1.5.1
-
-3)
-
-Die Logs für Paypal werden seit 1.5.3 im Ordner logs gespeichert und nicht mehr in includes/modules/payment/paypal/logs
-Wenn 1.5.1 oder 1.5 verwendet wird, am Server einen Ordner namens logs anlegen und mit chmod 777 beschreibbar machen.
-Idealerweise diesen Ordner auf eine Ebene oberhalb des www Verzeichnisses legen, so dass er nicht per www aufrufbar ist
-
-Folgende Definition einfügen in includes/configure.php und DEINADMIN/include/configure.php und den absoluten Pfad zum logs Ordner angeben:
-
-define('DIR_FS_LOGS', '/absoluter/pfad/zum/ordner/logs');
-
-
-
-
-
-
-
-
-
-
-
