@@ -44,9 +44,25 @@ This is kind of a quick and dirty solution as I just commented out or deleted so
 
 Installation:
 
+<<<<<<< HEAD
 Just choose your Zen Cart version in the folder GEAENDERTE DATEIEN (means changed files):
 Zen Cart 154 (suitable for American and German 154 versions)
 Zen Cart 155 (suitable for American 155 version only)
 Zen Cart 155 German (suitable for German 155 version only)
 
 Then upload the appropriate includes/modules/payment/paypalwpp.php to your Zen Cart installation.
+=======
+Just upload the file found in the folder GEAENDERTE DATEIEN (means changed files) to your Zen Cart installation
+
+If you are using a version prior than 1.5.4 change before uploading:
+
+includes/modules/payment/paypalwpp.php:
+
+$this->codeVersion = '1.5.4';
+
+Change from 1.5.4 to 1.5.3 or 1.5.1 or whatever version you are using
+
+if (PROJECT_VERSION_MAJOR != '1' && substr(PROJECT_VERSION_MINOR, 0, 3) != '5.4') $this->enabled = false;
+
+Change from 1.5.4 to 1.5.3 or 1.5.1 or whatever version you are using
+>>>>>>> origin/master
