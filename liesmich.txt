@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 Diese Modifikation ist nur für Zen Cart 1.5.5 oder 1.5.4 geeignet und nur wenn PayPal Express folgendermaßen konfiguriert ist:
-=======
-Diese Modifikation ist nur für Zen Cart 1.5.4 geeignet und nur wenn PayPal Express folgendermaßen konfiguriert ist:
->>>>>>> origin/master
 
 Payment Zone
 --kein--
@@ -61,12 +57,8 @@ API Signature -- Signature Code
 Entfernen des aktuell verwendeten PayPal Express Moduls unter Module > Zahlungsarten
 
 3)
-<<<<<<< HEAD
 Im Orner GEAENDERTE DATEIEN die verwendete Zen Cart Version auswählen: Zen Cart 154 (für deutsche und amerikanische Version), Zen Cart 155 (nur für amerikanische Version) oder Zen Cart 155 German (nur für deutsche Version)
 Hochladen der entsprechenden includes/modules/payment/paypalwpp.php in der vorgegebenen Struktur, dadurch wird eine bestehende PayPal Express Datei überschrieben.
-=======
-Hochladen der Datei aus dem Ordner GEAENDERTE DATEIEN in der vorgegebenen Struktur, dadurch wird eine bestehende PayPal Express Dateien überschrieben.
->>>>>>> origin/master
 
 4)
 PayPal Express (paypalwpp) unter Module > Zahlungsarten wieder installieren und so konfigurieren wie oben beschrieben.
