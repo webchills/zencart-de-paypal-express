@@ -33,7 +33,7 @@ Lots of customers have old adresses in their PayPal accounts and do not check th
 In the current module the PayPal address is taken as shipping address for the Zen Cart order, the PayPal address overwrites the shipping address that the customer has selected before in the store.
 So the shopowner gets lots of orders with wrong shipping addresses and can never be sure if the customer wants the shipping really to the address in the order confirmation email or shop administration.
 
-To solve this issue here are some modifications for the PayPal Express module in Zen Cart 1.5.5:
+To solve this issue here are some modifications for the PayPal Express module in Zen Cart:
 
 This is of course only suitable for stores which are configured as described above!
 
@@ -45,6 +45,7 @@ This is kind of a quick and dirty solution as I just commented out or deleted so
 Installation:
 
 Just choose your Zen Cart version in the folder GEAENDERTE DATEIEN (means changed files):
+Zen Cart 156 (suitable for American 156 version only)
 Zen Cart 155 (suitable for American 155 version only)
 Zen Cart 155 German (suitable for German 155 version only)
 

@@ -1,4 +1,4 @@
-Diese Modifikation ist nur für Zen Cart 1.5.5 geeignet und nur wenn PayPal Express folgendermaßen konfiguriert ist:
+Diese Modifikation ist nur für Zen Cart 1.5.5/1.5.6 geeignet und nur wenn PayPal Express folgendermaßen konfiguriert ist:
 
 Payment Zone
 --kein--
@@ -41,7 +41,7 @@ PayPal macht rein die Zahlungsabwicklung und kümmert sich nicht mehr um die Adr
 Dieses modifizierte Modul ist nur geeignet, wenn Paypal Express so konfiguriert wird wie oben beschrieben!
 
 
-Installation für Zen Cart 1.5.5:
+Installation für Zen Cart 1.5.5/1.5.6:
 
 1)
 Backup des aktuell verwendeten Paypal Express Moduls:
@@ -57,7 +57,7 @@ API Signature -- Signature Code
 Entfernen des aktuell verwendeten PayPal Express Moduls unter Module > Zahlungsarten
 
 3)
-Im Ordner GEAENDERTE DATEIEN die verwendete Zen Cart Version auswählen: Zen Cart 155 (nur für amerikanische Version) oder Zen Cart 155 German (nur für deutsche Version)
+Im Ordner GEAENDERTE DATEIEN die verwendete Zen Cart Version auswählen: Zen Cart 156 (nur für amerikanische Version), Zen Cart 155 (nur für amerikanische Version) oder Zen Cart 155 German (nur für deutsche Version)
 Hochladen der entsprechenden includes/modules/payment/paypalwpp.php in der vorgegebenen Struktur, dadurch wird eine bestehende PayPal Express Datei überschrieben.
 
 4)
