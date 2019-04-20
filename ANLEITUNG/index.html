@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>PayPal Express Update für Zen Cart 1.5.5f deutsch</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="de">
+<meta name="description" content="PayPal Express Update für Zen Cart 1.5.5f deutsch">
+<link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">  
+<script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<div id="header">
+<h1>PayPal Express Update für Zen Cart 1.5.5f deutsch</h1>
+</div>
+
+<div id="slidetabsmenu" style="display: none;">
+<ul>
+  <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Sinn und Zweck</span></a></li>
+  <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Installation</span></a></li>
+   <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Konfiguration</span></a></li>
+   <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>Deinstallation</span></a></li>
+  <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Download & Support</span></a></li>
+  <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>Unterstützen</span></a></li>
+ </ul>
+</div>
+<br style="clear: both;">
+
+<!--Begin tabcontainer-->
+<div id="tabcontentcontainer">
+
+<!--Begin sc1-->
+<div class="tabcontent" id="sc1" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Sinn und Zweck dieses Moduls</h2>
+
+ <p>Dieses Modul ist nur für Zen Cart 1.5.5f deutsch geeignet und ersetzt das in 1.5.5f deutsch bereits enthaltene PayPal Express Modul (paypalwpp)</p><p>Das in der deutschen Zen Cart Version 1.5.5f enthaltene PayPal Express Modul ist in vielen Szenarien nicht für einen echten Express Checkout geeignet und  überschreibt in vielen Szenarien die Lieferadresse der Bestellung ohne Kontrolle mit der bei PayPal hinterlegten Adresse.<br>
+   Da die Adressdaten bei PayPal oft veraltet sind, kann der Shopbetreiber bei abweichenden Lieferadressen oft nicht sicher sein, ob die Adresse wirklich so gewünscht oder eine veraltete Lieferadresse bei PayPal ist.<br>
+   Um diese Problematik zu umgehen gab es eine Zeit lang eine Modifikation, die gar keine Lieferadresse übergab und die Bestellung wie eine Lieferung nicht physischer Waren behandelte.<br>
+   Der Nachteil dieser Modifikation war, dass dadurch der PayPal Verkäuferschutz verloren ging. Und die Modifikation war für einen echten Express Checkout nicht geeignet.
+   <br>
+   <br>
+Dieses Update behebt diese Problematiken und ermöglicht den Einsatz von PayPal Express so wie es eigentlich gedacht ist. Natürlich kann es auch weiterhin ohne Express Button im Warenkorb verwendet werden, die Aktivierung dieses Features ist aber empfohlen, da es den Checkout für den Kunden vor allem am Mobile wesentlich einfacher macht. Das Anbieten von Express Checkout erhöht die Conversions nachweislich.<br>
+<br>
+Bei aktiviertem Express Checkout Button kann ein nicht eingeloggter Kunde direkt im Warenkorb oder auf der Loginseite den Checkout
+ mit PayPal starten. Er loggt sich bei PayPal ein und ähnlich wie bei einem Amazon Checkout wird automatisch ein Kundenkonto im Shop angelegt, falls es diese Emailadresse im Shop noch nicht gibt. Der Kunde bekommt ein Willkommensmail mit einem automatisch generierten Passwort, damit er sich später auch normal im Shop einloggen kann. Bei PayPal wählt der Kunde dann seine gewünschte Lieferadresse aus, die wird an den Shop übertragen.<br>
+ <br>
+ Um sicher zu stellen, dass der Kunde nicht einfach bei PayPal auf weiter geclickt und die Lieferadresse nicht wirklich geprüft hat, wird er auf jeden Fall nochmal auf die checkout_shipping Seite im Shop geleitet, wo ihm angezeigt wird, dass er die Lieferadresse bitte nochmals prüfen soll.<br>
+ Das dient auch dazu, die gewünschte Versandart auswählen zu können, falls es im Shop mehrere Versandarten gibt. Und es wird sichergestellt, dass die Versandkosten korrekt berechnt und an PayPal übergeben werden. Ändert der Kunde hier seine Lieferadresse, so wird diese Lieferdresse in sein PayPal Adressbuch für künftige Bestellungen synchronisiert.<br>
+ <br>
+ Ein Kunde, dessen Adressdaten bei PayPal korrekt sind, muss bei einem Express Checkout im Endeffekt also keinerlei Daten manuell im Shop eintippen.</p>
+ <p><strong>Voraussetzungen:
+ </strong></p>
+ <ul>
+   <li>Zen Cart 1.5.5f deutsch</li>
+   <li>Shop verwendet durchgehend SSL</li>
+   </ul>
+   
+<p><strong>Änderungen gegenüber dem in 1.5.5f integrierten Originalmodul:</strong>
+<ul>
+  <li>
+     Konfiguration vollständig auf deutsch übersetzt, mit empfohlenen asführlich erläuterten Einstellungen vorkonfiguriert</li>
+   <li>Behebung der Lieferadressenproblematik</li>
+   <li>Korrektes Handling der automatisch erstellten Kundenkonten auch bei Verwendung von Bestellen ohne Kundenkonto</li>
+     <li>Aktualisierung der PayPal Express Buttons auf die aktuellen Versionen</li>
+      <li>Prominentere Plazierung der automatisch generierten Zugangsdaten am Beginn des Willkommensmails</li>
+      <li>Prominentere Plazierung des Express Checkouts auf der Loginseite mit Infotext</li>
+ </ul>
+ <h3>Copyright,  Lizenz</h3>
+<p>
+Übersetzung/Anpassung/Überarbeitung des Moduls PayPal Express für die deutsche Zen Cart Version 1.5.5f<br/>
+April 2019<br>
+webchills (www.webchills.at)</p>
+
+
+<p>This contribution is subject to version 2.0 of the GPL license available through the world-wide-web at the following url:<br>
+  <a href="http://www.zen-cart-pro.at/license/2_0.txt">http://www.zen-cart-pro.at/license/2_0.txt</a></p>
+<p>Der Aufwand für die Überarbeitung und das Testen solcher Zahlungsmodule ist beträchtlich.<br>
+  Trotzdem stellen wir dieses Update kostenlos zur Verfügung als <strong>Donationware</strong>.<br>
+  Wenn Sie dieses Modul in Ihrem Zen Cart Shop nutzen, bitten wir Sie um eine Spende für die Weiterentwicklung der deutschen Zen Cart Version:</p>
+<p align="center"><a href="https://donorbox.org/spende-fur-die-weiterentwicklung-der-deutschen-zen-cart-version" target="_blank"><img src="https://www.zen-cart-pro.at/zencartpro-donation-white.png" alt="Spende für die Weiterentwicklung der deutschen Zen Cart Version" title="Spende für die Weiterentwicklung der deutschen Zen Cart Version"></a></p>
+</div>
+</div>
+</div>
+<!--End sc1-->
+
+<!--Begin sc2-->
+<div class="tabcontent" id="sc2" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Installation</h2>
+<h3>Voraussetzungen</h3>
+    <p>Dieses Modul ist<strong> nur für Zen Cart 1.5.5f deutsch geeignet</strong> und ersetzt das in 1.5.5f deutsch bereits enthaltene PayPal Express Modul (paypalwpp)<br>
+  <br>
+    Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:<br>
+  <br>
+    1) Ein guter Texteditor. <br>
+    Damit ist nicht das in Windows enthaltene Notepad oder Microsoft Word gemeint.<br>
+    Sie benötigen einen Texteditor, der utf-8 versteht und auch im Format utf-8 ohne BOM abspeichern kann.<br>
+    Meine Empfehlung: <a href="http://www.ultraedit.com/loc/de/index_de.html" target="_blank">UltraEdit</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist der kostenlose Texteditor <a href="http://notepad-plus.sourceforge.net/de/site.htm" target="_blank">Notepad++ </a><br>
+  </p>
+  <p>2) Ein Tool zum Vergleichen von Dateien<br>
+    Bei der Installation dieses Moduls ist es erforderlich, dass Sie den   Inhalt einiger Ihrer bestehenden Zen Cart Dateien mit dem Inhalt der   neuen Moduldateien vergleichen und die Änderungen zusammenführen   ("mergen").<br>
+    Meine Empfehlung: <a href="http://www.scootersoftware.com/" target="_blank">BeyondCompare</a> (kostenlose 30 Tage Testversion verfügbar)<br>
+    Ebenfalls gut geeignet ist das kostenlose Programm <a href="http://winmerge.org/" target="_blank">WinMerge </a></p>
+  <p><br>
+  <strong>Empfehlung:</strong><br>
+  <br>
+  Dieses Modul erst in einem Testsystem einbauen und dort   konfigurieren/testen und endgültig an die eigenen Wünsche anpassen. Sie können sich bei PayPal einen Sandbox Account anlegen und das Modul komplett im Sandbox Modus testen.<br>
+  Erst dann in einem Liveshop einsetzen! <br>
+  Sichern Sie unbedingt alle   Dateien Ihres Shops per FTP und sichern Sie die Datenbank mit phpMyAdmin   oder anderen geeigneten Tools!</p>
+<div id="warning"><b>WICHTIG</b><br>
+Vor dem Einbau dieser Änderungen:<br>
+BACKUP von Shop und Datenbank machen! <br>
+Keine Haftung, Verwendung auf eigene Gefahr!<br>
+BACKUP gemacht? Ok, dann weiterlesen...
+</div>
+<p>Die Installation erfolgt in folgenden Schritten. Halten Sie diesen Ablauf ein!<br>
+  <br>
+  <strong>Bevor Sie  auf das neue Modul aktualisieren, stellen Sie Folgendes sicher:</strong><br>
+  <br>
+  1)<br>
+Sie verwenden wirklich Zen Cart 1.5.5f deutsch<a href="https://sellercentral.amazon.de" target="_blank"></a>. Sollten Sie eine ältere deutsche Zen Cart Version verwenden, aktualisieren Sie zunächst auf 1.5.5f</p>
+<p>2) <br>
+  Sie haben sich Ihre PayPal API Zugangsdaten notiert.<br>
+  Sie finden diese Zugangsdaten in Ihrem PayPal Account so wie hier beschrieben:<br>
+  <a href="https://www.paypal.com/at/smarthelp/article/wie-fordere-ich-eine-api-berechtigung-mit-signatur-oder-zertifikat-an-faq3196" target="_blank">https://www.paypal.com/at/smarthelp/article/wie-fordere-ich-eine-api-berechtigung-mit-signatur-oder-zertifikat-an-faq3196</a>
+  <br>
+  Falls Sie im Shop bereits PayPal Express verwenden, dann sind diese Zugangsdaten unter Module &gt; Zahlungsarten &gt; paypalwpp großteils mit xxx ersetzt und daher nicht sichtbar.<br>
+  Daher notieren Sie sich die korrekten Daten jetzt aus Ihrem PayPal Account!
+</p>
+<p>3)<br/>Unter Module > Zahlungsarten aktivieren Sie die Zahlungsart Gratis (freecharger) falls sie in Ihrem Shop nicht aktiv sein sollte.<br/>Diese Zahlungsart sollte immer aktiv sein und aktiviert sich nur, wenn Gratisartikel gekauft werden.</p>
+<p>3)<br/>Unter Module > Versandarten aktivieren Sie die Versandart Immer versandkostenfrei (freeshipper), falls sie in Ihrem Shop nicht aktiv sein sollte.<br/>
+Diese Versandart sollte immer aktiv sein und aktiviert sich nur, wenn versandkostenfreie Artikel gekauft werden.</p>
+<p><br/>
+  <strong>Alles vorhanden und eingerichtet?<br>
+  Dann in folgenden Schritten auf das neue Modul aktualisieren:
+  </strong></p>
+<p><br>
+  1) <br> 
+  Nachdem Sie sich Ihre PayPal API Zugangsdaten notiert haben, entfernen Sie das derzeit aktive PayPal Express Modul in der Zen Cart Administration unter Module &gt; Zahlungsarten. Nicht einfach nur deaktivieren, sondern &quot;Modul deinstallieren&quot;
+<br>
+<br>
+2)<br> 
+Im Ordner GEAENDERTE DATEIEN finden Sie alle Dateien, die von der neuen Version dieses Moduls in Ihrer Zen Cart Installation geändert werden in der korrekten Struktur. Benennen Sie die Ordner includes/languages/german/DEINTEMPLATE und includes/languages/englisch/DEINTEMPLATE auf den Namen Ihres im Shop aktiven Templates um.<br>
+Falls Sie schon einmal Änderungen an diesen Dateien vorgenommen haben (z.B. in den Template- oder Sprachdateien), vergleichen Sie mit Beyond Compare oder Winmerge den Inhalt dieser Dateien mit denen in Ihrem Shop und nehmen die Änderungen manuell vor. <br>
+Dann laden Sie die Dateien in der vorgegebenen Struktur ins Shopverzeichnis hoch
+</p>
+<p>3)<br>
+Im Ordner NEUE DATEIEN den Ordner namens DEINADMIN auf den Namen Ihres admin Verzeichnisses   umbenennen.<br> 
+Dann in der vorgegebenen Struktur ins Shopverzeichnis hochladen.
+</p>
+<p>4) <b>OPTIONAL: Nur nötig wenn Sie das Modul Bestellen ohne Kundenkonto verwenden:</b><br/>
+  Falls Sie im Shop zusätzlich das Modul Bestellen ohne Kundenkonto (COWOA) verwenden, dann laden Sie nun die includes/modules/payment/paypalwpp aus dem Ordner OPTIONAL - BESTELLEN OHNE KUNDENKONTO hoch. Das ist eine für die Verwendung dieses Moduls angepasste Version.
+<p>5)<br>
+In die Zen Cart Administration einloggen<br>
+  <br>
+  6)<br>
+  In der Zen Cart Administration unter Module &gt; Zahlungsarten das  Modul PayPal Express (paypalwpp) wieder installieren. <br>
+  Alle Einstellungsmöglichkeiten sind dort erklärt und die empfohlenen Einstellungen bereits voreingestellt.<br>
+  Tragen Sie Ihre zuvor notierten API Zugangsdaten wieder ein.
+  <br>
+  </div>
+</div>
+</div>
+
+<!--End sc2-->
+
+<!--Begin sc3-->
+<div class="tabcontent" id="sc3" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>KONFIGURATION</h2>
+<p>Alle Einstellungen sind in der Moduladministration erklärt.<br>
+  <br>
+  <strong>Optional </strong>können Sie noch folgendes Feintuning vornehmen.<br>
+  <br>
+  1)<br>
+  Anpassung des vordefinierten Landes für automatisch erstellte Kundenkonten<br>
+  in includes/modules/payment/paypalwpp ist Deutschlan an zwei Stellen voreingestellt:<br>
+  Zeile 2423<br>
+  $country_id = '81'; // default country Germany<br>
+  Zeile 2580<br>
+  $country_id = '81'; //default country Germany<br>
+  Zeile 2389<br>
+  $country_code_arr-&gt;fields['countries_iso_code_2'] = 'DE';<br>
+  Wenn Sie Ihren Shop in Österreich betreiben kann es sinnvoll sein, hier auf die entsprechenden Werte für Österreich zu ändern (ISO CODE 2 = AT), Country ID von Österreich unter Lokalisation &gt; Länder ermitteln<br>
+  <br>
+  2)<br>
+  Für Shops, die den Express Button am Desktop größer anzeigen wollen.<br>
+  Das Modul unterscheidet zwischen mobiler Version und Desktop Version und bietet dafür 2 unterschiedliche Buttons an, die direkt von PayPal gezogen werden. Für die deutschen Buttons steht derzeit bei PayPal kein größerer Button zur Verfügung. Daher werden standardmäßig in der deutschen Sprache für beide Versionen dieselben (eher kleinen) Buttons verwendet.<br>
+  Wem der Button in der Desktopversion der deutschen Sprache zu klein ist, kann stattdessen den mitgelieferten Button im images Verzeichnis ansprechen und in includes/languages/german/modules/payment/paypalwpp.php die folgende Definition ändern von:<br>
+  define('MODULE_PAYMENT_PAYPALWPP_EC_BUTTON_IMG', 'https://www.paypalobjects.com/webstatic/de_DE/i/de-btn-expresscheckout.gif');<br>
+   auf<br>
+  define('MODULE_PAYMENT_PAYPALWPP_EC_BUTTON_IMG', 'https://www.meinshop.de/images/checkout-logo-large-de.png');  <br>
+  <br>
+</p>
+</div>
+</div>
+</div>
+<!--End sc3-->
+
+<!--Begin sc4-->
+<div class="tabcontent" id="sc4" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>DEINSTALLATION</h2>
+<p>1.<br>
+  Unter Module &gt; Zahlungsarten das Modul deinstallieren
+  <br>
+  <br>
+  2.<br>
+  Alle von diesem Modul geänderten Dateien wieder mit den Originalversionen bzw. den Dateien Ihres Backups ersetzen.</p>
+<p>3.<br>
+  Alle von diesem Modul eingespielten neuen Dateien wieder vom Server löschen. </p>
+</div>
+</div>
+</div>
+<!--End sc4-->
+
+<!--Begin sc5-->
+<div class="tabcontent" id="sc5" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+<h2>Download &amp; Support</h2>
+<p>Download des Moduls:</p>
+<p><a href="https://www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=12" target="_blank">www.zen-cart-pro.at/forum/vbdownloads.php?categoryid=12</a></p>
+
+<p>Supportforum zum Modul:</p>
+<p><a href="https://www.zen-cart-pro.at/forum/forums/58-PayPal" target="_blank">www.zen-cart-pro.at/forum/forums/58-PayPal</a></p>
+</div>
+</div>
+</div>
+<!--End sc5-->
+
+<!--Begin sc6-->
+<div class="tabcontent" id="sc6" style="display: block;">
+<div class="textcontent">
+<div class="regularlist">
+
+<h2>Unterstützen</h2>
+<p>Sie finden dieses Modul nützlich?</p>
+<p>Unterstützen Sie die Weiterentwicklung der deutschen Zen Cart Version.<br/>Wir freuen uns über Spenden zur Finanzierung des Servers und der vBulletin-Lizenz: </p>
+<p><a href="https://donorbox.org/spende-fur-die-weiterentwicklung-der-deutschen-zen-cart-version" target="_blank"><img src="https://www.zen-cart-pro.at/zencartpro-donation-white.png" alt="Spende für die Weiterentwicklung der deutschen Zen Cart Version" title="Spende für die Weiterentwicklung der deutschen Zen Cart Version"></a></p>
+
+<br/><br/>
+<p>Du bist Entwickler und willst helfen, die deutsche Zen Cart Version noch besser zu machen?<br>
+  Beteilige Dich auf Github:<br>
+  <a href="https://github.com/zencartpro" target="_blank"><strong>https://github.com/zencartpro</strong></a></p>
+<br/><br/>
+</div>
+</div>
+</div>
+<!--End sc6-->
+</div>
+<div id="footer">
+Ein Modul von <a href="http://www.zen-cart-pro.at" target="_blank">www.zen-cart-pro.at</a> - Die deutsche Zen Cart Version
+</div>
+</div>
+<!--end tabcontainer-->
+<script type="text/javascript">document.getElementById('sc1').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc2').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc3').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc4').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc5').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc6').style.display = 'none';</script>
+<script type="text/javascript">ShowTabs()</script>
+<script type="text/javascript">
+// We only show the tab links if JavaScript is available/active.
+<!--
+if (document.getElementById("slidetabsmenu") != null) {
+  document.getElementById('slidetabsmenu').style.display = "block";
+}
+//-->
+</script>
+
+</body></html>
