@@ -24,7 +24,7 @@ If you are still suffering from this issue in the American Zen Cart version and 
 
 https://www.zen-cart.com/showthread.php?186414-Paypal-Express-Checkout-Shipping-Address-Issue
 
-Maybe your voice will get heared one time
+Maybe your voice will get heard one time
 
 Good luck...
 
