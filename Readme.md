@@ -1,6 +1,6 @@
 **ENGLISH VISITORS PLEASE NOTE:**
 
-This repository formerly contained a modification to solve the Shipping Adress issues in the PayPal Express module integrated in Zen Cart as described here: 
+This repository formerly contained a modification to solve the Shipping Address issues in the PayPal Express module integrated in Zen Cart as described here: 
 
 https://www.zen-cart.com/showthread.php?186414-Paypal-Express-Checkout-Shipping-Address-Issue
 
